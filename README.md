@@ -112,20 +112,6 @@ TOOLS.push({
 It automatically appears in the sidebar, on the home page and in the `Ctrl+K` palette.
 Pure logic lives in [`lib.js`](lib.js) so it can be unit-tested in Node — see [`tests/`](tests).
 
-## 🗂️ Project structure
-
-```
-devdock/
-├── index.html              # app shell
-├── style.css               # themes (dark/light) + layout
-├── app.js                  # tools, router, command palette
-├── lib.js                  # pure helpers (unit-tested)
-├── sw.js                   # offline service worker
-├── manifest.webmanifest    # PWA manifest
-├── tests/lib.test.js       # node:test unit tests
-└── .github/workflows/      # CI + GitHub Pages deploy
-```
-
 ## 🔒 Privacy
 
 DevDock has no backend. Nothing you paste is uploaded, logged or stored on a server.
