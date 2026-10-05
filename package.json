@@ -1,0 +1,12 @@
+{
+  "name": "devdock",
+  "version": "1.0.0",
+  "description": "Offline, private developer toolbox: 11 tools in one tab. Zero dependencies.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "node --test tests/lib.test.js"
+  },
+  "keywords": ["developer-tools", "json-formatter", "jwt-decoder", "regex-tester", "base64", "pwa", "offline"]
+}

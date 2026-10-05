@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevDock — Offline Developer Toolbox</title>
+  <meta name="description" content="11 developer tools in one tab: JSON formatter, Base64, JWT decoder, hashes, UUID, regex tester and more. Works offline. Nothing ever leaves your browser." />
+  <meta name="theme-color" content="#0b0d12" />
+  <meta property="og:title" content="DevDock — Offline Developer Toolbox" />
+  <meta property="og:description" content="11 dev tools in one tab. Offline, private, open source. Press Ctrl+K." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply saved/system theme before first paint (no flash)
+    (function () {
+      try {
+        var t = localStorage.getItem("dd.theme");
+        if (!t) t = window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="top">
+    <button id="menuBtn" class="icon-btn mobile-only" aria-label="Menu">☰</button>
+    <a class="brand" href="#"><span class="logo">⌘</span> DevDock</a>
+    <button id="paletteBtn" class="search-trigger" aria-label="Search tools">
+      <span>🔍 Search tools…</span><kbd data-kbd>Ctrl K</kbd>
+    </button>
+    <a class="btn star" href="https://github.com/YOUR-USERNAME/devdock" target="_blank" rel="noopener">⭐ Star</a>
+    <button id="themeBtn" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌓</button>
+  </header>
+
+  <div class="shell">
+    <nav id="nav" class="nav" aria-label="Tools">
+      <ul id="navList"></ul>
+      <p class="nav-foot">Offline · Private · MIT<br /><a href="https://github.com/YOUR-USERNAME/devdock" target="_blank" rel="noopener">View on GitHub</a></p>
+    </nav>
+    <main id="view" class="view"></main>
+  </div>
+
+  <div id="palette" class="palette" hidden>
+    <div class="palette-box" role="dialog" aria-modal="true" aria-label="Search tools">
+      <input id="palInput" type="text" placeholder="Search tools… (try “jwt”, “color”, “uuid”)" autocomplete="off" spellcheck="false" />
+      <ul id="palList" role="listbox"></ul>
+      <div class="palette-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p style="padding:2rem">DevDock needs JavaScript to run.</p></noscript>
+
+  <script src="lib.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
